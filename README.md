@@ -1,111 +1,131 @@
-# Frontend Mentor - NFT preview card component solution
+# 🚀 Frontend Mentor - NFT preview card component solution
 
-This is a solution to the [NFT preview card component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/nft-preview-card-component-SbdUL_w0U). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [NFT preview card component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/nft-preview-card-component-SbdUL_w0U).  
+The goal of this project is to build a responsive card component and reproduce the design as accurately as possible while applying modern frontend practices.
 
-## Table of contents
+---
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+## 🎬 Demo
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+![](./docs/demo.gif)
 
-## Overview
+---
 
-### The challenge
+## 🎯 The challenge
 
 Users should be able to:
 
 - View the optimal layout depending on their device's screen size
 - See hover states for interactive elements
 
-### Screenshot
+---
 
-![](./screenshot.jpg)
+## 📸 Screenshots
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+| 📱 Mobile | 📲 Tablet | 🖥️ Desktop |
+| --- | --- | --- |
+| ![](./docs/mobile-default.avif) | ![](./docs/tablet-default.avif) | ![](./docs/desktop-default.avif) |
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+### 🖥️ Desktop interaction &ndash; `:hover` & `:focus-visble`
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+![](./docs/desktop-interaction.avif)
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+---
 
-### Links
+## 🔗 Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- 🌎 [Live site](https://vimpdev.github.io/fem-12-nft-preview-card-component/)
+<!-- - 🧑‍💻 [View solution on Frontend Mentor](https://your-solution-url.com) -->
 
-## My process
+---
 
-### Built with
+## Built with
 
-- Semantic HTML5 markup
+- Semantic HTML5
+- Mobile-first workflow
+- Modern CSS
+- CSS Layers (`@layer`) for cascade management
 - CSS custom properties
+- Logical properties
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- Custom CSS reset
+- Accessible focus states
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+---
 
-### What I learned
+## ♿ Accessibility considerations
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Some accessibility improvements were implemented:
 
-To see how you can add code snippets, see below:
+- A hidden `<h1>` heading using a `visually-hidden` utility class to preserve a proper document outline.
+- All interactive elements are accessible via **keyboard** navigation.
+- `:focus-visible` was used to provide **clear focus indicators**.
+- Decorative icons use empty `alt` attributes to avoid noise in screen readers.
 
+Example:
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<h1 class="visually-hidden">NFT preview card</h1>
 ```
+
+---
+
+## 🎨 Interesting CSS techniques
+
+### 1️⃣ CSS Layers for architecture
+
+The stylesheet is organized using `@layer` to control the cascade and maintain a predictable architecture:
+
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+@layer reset, fonts, tokens, base, components, utilities;
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+This approach separates:
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+- reset styles
+- design tokens
+- base styles
+- UI components
+- utilities
 
-### Continued development
+### 2️⃣ Custom reset tailored to the project
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Instead of using a full CSS reset library, a **minimal custom reset** was implemented, including:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+* consistent `box-sizing`
+* reset margins
+* responsive images
+* improved focus styles
 
-### Useful resources
+### 3️⃣ Smooth overlay transition on the card image
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+The hover overlay uses an **opacity transition hack** to avoid a harsh background change and achieve a smoother animation.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+```css
+.card-media::after {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
 
-## Author
+.card-media:hover::after,
+.card-media:focus-visible::after {
+  opacity: 1;
+}
+```
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+This technique avoids abrupt transitions and produces a much smoother interaction.
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+---
 
-## Acknowledgments
+## 📚 Resources
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+- ManzDev — [CSS Layers explanation](https://lenguajecss.com/cascada-css/especificidad/regla-layer/)
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Kevin Powell — [CSS Layers tutorial](https://youtu.be/NDNRGW-_1EE?si=7tMb2T2JIknrzEjm)
+
+
+## 👩‍💻 Author
+
+- Frontend Mentor &ndash; [@vimpdev](https://www.frontendmentor.io/profile/vimpdev)
+
+---
