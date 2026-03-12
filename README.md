@@ -35,7 +35,7 @@ Users should be able to:
 ## 🔗 Links
 
 - 🌎 [Live site](https://vimpdev.github.io/fem-12-nft-preview-card-component/)
-<!-- - 🧑‍💻 [View solution on Frontend Mentor](https://your-solution-url.com) -->
+- 🧑‍💻 [View solution on Frontend Mentor](https://www.frontendmentor.io/solutions/nft-preview-card-component-semantic-html-and-css-layers-htXhLBfzlT)
 
 ---
 
